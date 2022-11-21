@@ -21,7 +21,7 @@ public class LionTest extends TestCase {
         MockitoAnnotations.initMocks(this);
     }
     @Mock
-    Felines felines;
+
     Feline feline;
 
 
@@ -45,14 +45,14 @@ public class LionTest extends TestCase {
     @Test
     public void doesHaveManeReturnTrue() throws Exception {
 
-        Lion lion = new Lion(sex, felines, feline);
+        Lion lion = new Lion(sex,  feline);
         assertEquals(mane, lion.doesHaveMane());
     }
 
     @Test
     public void getKittensReturn() throws Exception {
-        Lion lion = new Lion(sex, felines, feline);
-        when(felines.getKittens()).thenReturn(1);
+        Lion lion = new Lion(sex, feline);
+        when(feline.getKittens()).thenReturn(1);
         assertEquals(1, lion.getKittens());
     }
 
@@ -61,7 +61,7 @@ public class LionTest extends TestCase {
     @Test
     public void getFoodReturnPredatorFood() throws Exception {
         Feline feline = new Feline();
-        Lion lion = new Lion(sex, felines, feline);
+        Lion lion = new Lion(sex, feline);
         var food = lion.getFood();
         var Expected = List.of("Животные", "Птицы", "Рыба");
         assertEquals(Expected, food);
